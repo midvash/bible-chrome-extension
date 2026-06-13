@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — Библейские ссылки"
+  },
+  "extDescription": {
+    "message": "Распознаёт библейские ссылки на любой странице и связывает их с Midvash, показывая предпросмотр стиха при наведении."
+  },
+  "loading": {
+    "message": "Загрузка…"
+  },
+  "popupEnabled": {
+    "message": "Расширение включено"
+  },
+  "popupShowTooltip": {
+    "message": "Предпросмотр при наведении"
+  },
+  "popupVersionForLocale": {
+    "message": "Версия по умолчанию"
+  },
+  "popupOptions": {
+    "message": "Больше настроек"
+  },
+  "optionsTitle": {
+    "message": "Настройки"
+  },
+  "optionsSubtitle": {
+    "message": "Выберите библейскую версию по умолчанию для каждого языка и управляйте сайтами, на которых работает расширение."
+  },
+  "optionsVersionsTitle": {
+    "message": "Версия по умолчанию для каждого языка"
+  },
+  "optionsBlacklistTitle": {
+    "message": "Заблокированные сайты"
+  },
+  "optionsBlacklistHint": {
+    "message": "Добавьте домены, на которых расширение не должно работать. Поддомены включаются автоматически."
+  },
+  "optionsSaved": {
+    "message": "Сохранено"
+  },
+  "tooltipLoading": {
+    "message": "Загрузка стиха…"
+  },
+  "tooltipUnavailable": {
+    "message": "Стих сейчас недоступен."
+  },
+  "tooltipReadMore": {
+    "message": "Читать на Midvash"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "Этот сайт является частью Midvash, целевого сайта расширения. Расширение здесь не работает."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "example.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "Блокировать"
+  },
+  "optionsBlacklistRemove": {
+    "message": "Удалить"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "Пока нет заблокированных сайтов. Добавьте сверху или используйте всплывающее окно для блокировки текущего сайта."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "Всегда заблокированы"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "Это сами сайты Midvash — расширение никогда не запускается на них, так как они являются местом назначения."
+  },
+  "popupBlockOnSite": {
+    "message": "Заблокировать ссылки на этом сайте"
+  },
+  "popupActivateOnSite": {
+    "message": "Активировать на этом сайте"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "Ссылки отключены на этом сайте."
+  },
+  "tooltipCopy": {
+    "message": "Копировать"
+  },
+  "tooltipCopied": {
+    "message": "Скопировано!"
+  },
+  "tooltipClose": {
+    "message": "Закрыть превью"
+  },
+  "tooltipCompareLabel": {
+    "message": "Сравнить с"
+  },
+  "tooltipCompareNone": {
+    "message": "— нет —"
+  },
+  "navPrevVerse": {
+    "message": "Пред. стих"
+  },
+  "navNextVerse": {
+    "message": "След. стих"
+  },
+  "navPrevChapter": {
+    "message": "Пред. глава"
+  },
+  "navNextChapter": {
+    "message": "След. глава"
+  },
+  "navWholeChapter": {
+    "message": "Вся глава"
+  },
+  "popupOpenInLabel": {
+    "message": "Открывать ссылки в"
+  },
+  "popupOpenInTab": {
+    "message": "Новая вкладка"
+  },
+  "popupOpenInSidePanel": {
+    "message": "Боковая панель"
+  },
+  "popupOpenInHint": {
+    "message": "Shift = новая вкладка; Alt = боковая панель."
+  }
+}

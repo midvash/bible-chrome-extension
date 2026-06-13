@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — 圣经链接"
+  },
+  "extDescription": {
+    "message": "在任何网页上识别圣经引用,并链接到 Midvash,鼠标悬停可预览经文。"
+  },
+  "loading": {
+    "message": "加载中…"
+  },
+  "popupEnabled": {
+    "message": "扩展已启用"
+  },
+  "popupShowTooltip": {
+    "message": "悬停预览"
+  },
+  "popupVersionForLocale": {
+    "message": "默认版本"
+  },
+  "popupOptions": {
+    "message": "更多选项"
+  },
+  "optionsTitle": {
+    "message": "设置"
+  },
+  "optionsSubtitle": {
+    "message": "为每种语言选择默认圣经版本,并管理扩展运行的站点。"
+  },
+  "optionsVersionsTitle": {
+    "message": "各语言默认版本"
+  },
+  "optionsBlacklistTitle": {
+    "message": "屏蔽的网站"
+  },
+  "optionsBlacklistHint": {
+    "message": "添加扩展不应运行的域名。子域名会自动匹配。"
+  },
+  "optionsSaved": {
+    "message": "已保存"
+  },
+  "tooltipLoading": {
+    "message": "正在加载经文…"
+  },
+  "tooltipUnavailable": {
+    "message": "经文暂时不可用。"
+  },
+  "tooltipReadMore": {
+    "message": "在 Midvash 阅读"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "此站点是 Midvash 的一部分,是扩展的目标站点。扩展不在此运行。"
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "例如:example.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "屏蔽"
+  },
+  "optionsBlacklistRemove": {
+    "message": "移除"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "暂无屏蔽的站点。在上方添加,或使用弹窗屏蔽当前站点。"
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "始终屏蔽"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "这些是 Midvash 自己的站点 — 扩展不会在它们上运行,因为它们是扩展引导用户去的地方。"
+  },
+  "popupBlockOnSite": {
+    "message": "在此站点屏蔽引用"
+  },
+  "popupActivateOnSite": {
+    "message": "在此站点启用"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "此站点未启用引用显示。"
+  },
+  "tooltipCopy": {
+    "message": "复制"
+  },
+  "tooltipCopied": {
+    "message": "已复制!"
+  },
+  "tooltipClose": {
+    "message": "关闭预览"
+  },
+  "tooltipCompareLabel": {
+    "message": "对比"
+  },
+  "tooltipCompareNone": {
+    "message": "— 无 —"
+  },
+  "navPrevVerse": {
+    "message": "上一节"
+  },
+  "navNextVerse": {
+    "message": "下一节"
+  },
+  "navPrevChapter": {
+    "message": "上一章"
+  },
+  "navNextChapter": {
+    "message": "下一章"
+  },
+  "navWholeChapter": {
+    "message": "整章"
+  },
+  "popupOpenInLabel": {
+    "message": "打开链接于"
+  },
+  "popupOpenInTab": {
+    "message": "新标签页"
+  },
+  "popupOpenInSidePanel": {
+    "message": "侧边栏"
+  },
+  "popupOpenInHint": {
+    "message": "按 Shift 强制新标签页；按 Alt 强制侧边栏。"
+  }
+}

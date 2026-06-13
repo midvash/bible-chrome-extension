@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — Link Biblici"
+  },
+  "extDescription": {
+    "message": "Rileva i riferimenti biblici su qualsiasi pagina e li collega a Midvash con anteprima al passaggio del mouse."
+  },
+  "loading": {
+    "message": "Caricamento…"
+  },
+  "popupEnabled": {
+    "message": "Estensione attiva"
+  },
+  "popupShowTooltip": {
+    "message": "Anteprima al passaggio del mouse"
+  },
+  "popupVersionForLocale": {
+    "message": "Versione predefinita"
+  },
+  "popupOptions": {
+    "message": "Altre opzioni"
+  },
+  "optionsTitle": {
+    "message": "Impostazioni"
+  },
+  "optionsSubtitle": {
+    "message": "Scegli la versione biblica predefinita per lingua e gestisci su quali siti viene eseguita l'estensione."
+  },
+  "optionsVersionsTitle": {
+    "message": "Versione predefinita per lingua"
+  },
+  "optionsBlacklistTitle": {
+    "message": "Siti bloccati"
+  },
+  "optionsBlacklistHint": {
+    "message": "Aggiungi i domini su cui l'estensione non deve essere eseguita. I sottodomini sono inclusi automaticamente."
+  },
+  "optionsSaved": {
+    "message": "Salvato"
+  },
+  "tooltipLoading": {
+    "message": "Caricamento versetto…"
+  },
+  "tooltipUnavailable": {
+    "message": "Versetto non disponibile."
+  },
+  "tooltipReadMore": {
+    "message": "Leggi su Midvash"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "Questo sito fa parte di Midvash, la destinazione dell'estensione. Non viene eseguito qui."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "esempio.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "Blocca"
+  },
+  "optionsBlacklistRemove": {
+    "message": "Rimuovi"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "Nessun sito ancora bloccato. Aggiungine uno sopra o usa il popup per bloccare il sito attuale."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "Sempre bloccati"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "Questi sono i siti Midvash stessi — l'estensione non viene mai eseguita su di essi, dato che sono la sua destinazione."
+  },
+  "popupBlockOnSite": {
+    "message": "Blocca i riferimenti su questo sito"
+  },
+  "popupActivateOnSite": {
+    "message": "Attiva su questo sito"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "I riferimenti sono disattivati su questo sito."
+  },
+  "tooltipCopy": {
+    "message": "Copia"
+  },
+  "tooltipCopied": {
+    "message": "Copiato!"
+  },
+  "tooltipClose": {
+    "message": "Chiudi anteprima"
+  },
+  "tooltipCompareLabel": {
+    "message": "Confronta con"
+  },
+  "tooltipCompareNone": {
+    "message": "— nessuna —"
+  },
+  "navPrevVerse": {
+    "message": "Vers. prec."
+  },
+  "navNextVerse": {
+    "message": "Vers. succ."
+  },
+  "navPrevChapter": {
+    "message": "Cap. prec."
+  },
+  "navNextChapter": {
+    "message": "Cap. succ."
+  },
+  "navWholeChapter": {
+    "message": "Intero capitolo"
+  },
+  "popupOpenInLabel": {
+    "message": "Apri i link in"
+  },
+  "popupOpenInTab": {
+    "message": "Nuova scheda"
+  },
+  "popupOpenInSidePanel": {
+    "message": "Pannello laterale"
+  },
+  "popupOpenInHint": {
+    "message": "Shift forza una nuova scheda; Alt forza il pannello laterale."
+  }
+}

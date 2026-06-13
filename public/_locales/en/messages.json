@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — Bible Links"
+  },
+  "extDescription": {
+    "message": "Detects Bible references on any page and links them to Midvash with a hover preview."
+  },
+  "loading": {
+    "message": "Loading…"
+  },
+  "popupEnabled": {
+    "message": "Extension enabled"
+  },
+  "popupShowTooltip": {
+    "message": "Hover preview"
+  },
+  "popupVersionForLocale": {
+    "message": "Default version"
+  },
+  "popupOptions": {
+    "message": "More options"
+  },
+  "optionsTitle": {
+    "message": "Settings"
+  },
+  "optionsSubtitle": {
+    "message": "Choose the default Bible version per language and manage which sites the extension runs on."
+  },
+  "optionsVersionsTitle": {
+    "message": "Default version per language"
+  },
+  "optionsBlacklistTitle": {
+    "message": "Blocked sites"
+  },
+  "optionsBlacklistHint": {
+    "message": "Add domains where the extension should not run. Subdomains are matched automatically."
+  },
+  "optionsSaved": {
+    "message": "Saved"
+  },
+  "tooltipLoading": {
+    "message": "Loading verse…"
+  },
+  "tooltipUnavailable": {
+    "message": "Verse unavailable right now."
+  },
+  "tooltipReadMore": {
+    "message": "Read on Midvash"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "This site is part of Midvash, the extension's destination. It does not run here."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "example.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "Block"
+  },
+  "optionsBlacklistRemove": {
+    "message": "Remove"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "No sites blocked yet. Add one above or use the popup to block the current site."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "Always blocked"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "These are the Midvash sites themselves — the extension never runs on them, since they're where it sends you."
+  },
+  "popupBlockOnSite": {
+    "message": "Block references on this site"
+  },
+  "popupActivateOnSite": {
+    "message": "Activate on this site"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "References are disabled on this site."
+  },
+  "tooltipCopy": {
+    "message": "Copy"
+  },
+  "tooltipCopied": {
+    "message": "Copied!"
+  },
+  "tooltipClose": {
+    "message": "Close preview"
+  },
+  "tooltipCompareLabel": {
+    "message": "Compare with"
+  },
+  "tooltipCompareNone": {
+    "message": "— none —"
+  },
+  "navPrevVerse": {
+    "message": "Prev verse"
+  },
+  "navNextVerse": {
+    "message": "Next verse"
+  },
+  "navPrevChapter": {
+    "message": "Prev chapter"
+  },
+  "navNextChapter": {
+    "message": "Next chapter"
+  },
+  "navWholeChapter": {
+    "message": "Whole chapter"
+  },
+  "popupOpenInLabel": {
+    "message": "Open links in"
+  },
+  "popupOpenInTab": {
+    "message": "New tab"
+  },
+  "popupOpenInSidePanel": {
+    "message": "Side panel"
+  },
+  "popupOpenInHint": {
+    "message": "Hold Shift to force new tab; Alt to force side panel."
+  }
+}

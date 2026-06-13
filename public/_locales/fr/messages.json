@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — Liens Bibliques"
+  },
+  "extDescription": {
+    "message": "Détecte les références bibliques sur toute page et les lie à Midvash avec un aperçu au survol."
+  },
+  "loading": {
+    "message": "Chargement…"
+  },
+  "popupEnabled": {
+    "message": "Extension activée"
+  },
+  "popupShowTooltip": {
+    "message": "Aperçu au survol"
+  },
+  "popupVersionForLocale": {
+    "message": "Version par défaut"
+  },
+  "popupOptions": {
+    "message": "Plus d'options"
+  },
+  "optionsTitle": {
+    "message": "Paramètres"
+  },
+  "optionsSubtitle": {
+    "message": "Choisissez la version biblique par défaut par langue et gérez les sites où l'extension s'exécute."
+  },
+  "optionsVersionsTitle": {
+    "message": "Version par défaut par langue"
+  },
+  "optionsBlacklistTitle": {
+    "message": "Sites bloqués"
+  },
+  "optionsBlacklistHint": {
+    "message": "Ajoutez les domaines où l'extension ne doit pas s'exécuter. Les sous-domaines sont inclus automatiquement."
+  },
+  "optionsSaved": {
+    "message": "Enregistré"
+  },
+  "tooltipLoading": {
+    "message": "Chargement du verset…"
+  },
+  "tooltipUnavailable": {
+    "message": "Verset indisponible."
+  },
+  "tooltipReadMore": {
+    "message": "Lire sur Midvash"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "Ce site fait partie de Midvash, la destination de l'extension. Elle ne s'exécute pas ici."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "exemple.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "Bloquer"
+  },
+  "optionsBlacklistRemove": {
+    "message": "Retirer"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "Aucun site bloqué pour le moment. Ajoutez-en un ci-dessus ou utilisez le popup pour bloquer le site actuel."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "Toujours bloqués"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "Ce sont les sites Midvash eux-mêmes — l'extension ne s'exécute jamais dessus, car ce sont leurs destinations."
+  },
+  "popupBlockOnSite": {
+    "message": "Bloquer les références sur ce site"
+  },
+  "popupActivateOnSite": {
+    "message": "Activer sur ce site"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "Les références sont désactivées sur ce site."
+  },
+  "tooltipCopy": {
+    "message": "Copier"
+  },
+  "tooltipCopied": {
+    "message": "Copié !"
+  },
+  "tooltipClose": {
+    "message": "Fermer l'aperçu"
+  },
+  "tooltipCompareLabel": {
+    "message": "Comparer avec"
+  },
+  "tooltipCompareNone": {
+    "message": "— aucune —"
+  },
+  "navPrevVerse": {
+    "message": "Verset préc."
+  },
+  "navNextVerse": {
+    "message": "Verset suiv."
+  },
+  "navPrevChapter": {
+    "message": "Chap. préc."
+  },
+  "navNextChapter": {
+    "message": "Chap. suiv."
+  },
+  "navWholeChapter": {
+    "message": "Chapitre entier"
+  },
+  "popupOpenInLabel": {
+    "message": "Ouvrir les liens dans"
+  },
+  "popupOpenInTab": {
+    "message": "Nouvel onglet"
+  },
+  "popupOpenInSidePanel": {
+    "message": "Panneau latéral"
+  },
+  "popupOpenInHint": {
+    "message": "Maj force un nouvel onglet ; Alt force le panneau."
+  }
+}

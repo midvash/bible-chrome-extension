@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — Bibel-Links"
+  },
+  "extDescription": {
+    "message": "Erkennt Bibelstellen auf jeder Seite und verlinkt sie zu Midvash mit Vorschau beim Überfahren mit der Maus."
+  },
+  "loading": {
+    "message": "Lädt…"
+  },
+  "popupEnabled": {
+    "message": "Erweiterung aktiv"
+  },
+  "popupShowTooltip": {
+    "message": "Vorschau beim Überfahren"
+  },
+  "popupVersionForLocale": {
+    "message": "Standardübersetzung"
+  },
+  "popupOptions": {
+    "message": "Weitere Optionen"
+  },
+  "optionsTitle": {
+    "message": "Einstellungen"
+  },
+  "optionsSubtitle": {
+    "message": "Wähle die Standardübersetzung pro Sprache und verwalte, auf welchen Seiten die Erweiterung läuft."
+  },
+  "optionsVersionsTitle": {
+    "message": "Standardübersetzung pro Sprache"
+  },
+  "optionsBlacklistTitle": {
+    "message": "Blockierte Seiten"
+  },
+  "optionsBlacklistHint": {
+    "message": "Domains hinzufügen, auf denen die Erweiterung nicht laufen soll. Subdomains werden automatisch eingeschlossen."
+  },
+  "optionsSaved": {
+    "message": "Gespeichert"
+  },
+  "tooltipLoading": {
+    "message": "Vers wird geladen…"
+  },
+  "tooltipUnavailable": {
+    "message": "Vers gerade nicht verfügbar."
+  },
+  "tooltipReadMore": {
+    "message": "Auf Midvash lesen"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "Diese Seite gehört zu Midvash, dem Ziel der Erweiterung. Sie läuft hier nicht."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "beispiel.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "Sperren"
+  },
+  "optionsBlacklistRemove": {
+    "message": "Entfernen"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "Noch keine Seiten gesperrt. Fügen Sie oben eine hinzu oder verwenden Sie das Popup, um die aktuelle Seite zu sperren."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "Immer gesperrt"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "Dies sind die Midvash-Seiten selbst — die Erweiterung läuft dort nie, da sie das Ziel der Links ist."
+  },
+  "popupBlockOnSite": {
+    "message": "Referenzen auf dieser Seite sperren"
+  },
+  "popupActivateOnSite": {
+    "message": "Auf dieser Seite aktivieren"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "Referenzen sind auf dieser Seite deaktiviert."
+  },
+  "tooltipCopy": {
+    "message": "Kopieren"
+  },
+  "tooltipCopied": {
+    "message": "Kopiert!"
+  },
+  "tooltipClose": {
+    "message": "Vorschau schließen"
+  },
+  "tooltipCompareLabel": {
+    "message": "Vergleichen mit"
+  },
+  "tooltipCompareNone": {
+    "message": "— keine —"
+  },
+  "navPrevVerse": {
+    "message": "Vorh. Vers"
+  },
+  "navNextVerse": {
+    "message": "Nächster Vers"
+  },
+  "navPrevChapter": {
+    "message": "Vorh. Kapitel"
+  },
+  "navNextChapter": {
+    "message": "Nächstes Kapitel"
+  },
+  "navWholeChapter": {
+    "message": "Ganzes Kapitel"
+  },
+  "popupOpenInLabel": {
+    "message": "Links öffnen in"
+  },
+  "popupOpenInTab": {
+    "message": "Neuer Tab"
+  },
+  "popupOpenInSidePanel": {
+    "message": "Seitenleiste"
+  },
+  "popupOpenInHint": {
+    "message": "Shift erzwingt neuen Tab; Alt erzwingt Seitenleiste."
+  }
+}

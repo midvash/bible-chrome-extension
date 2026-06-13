@@ -1,0 +1,122 @@
+{
+  "extName": {
+    "message": "Midvash — 성경 링크"
+  },
+  "extDescription": {
+    "message": "어떤 페이지에서든 성경 참조를 감지하여 Midvash로 연결하고, 마우스를 올리면 구절을 미리 보여줍니다."
+  },
+  "loading": {
+    "message": "불러오는 중…"
+  },
+  "popupEnabled": {
+    "message": "확장 프로그램 사용"
+  },
+  "popupShowTooltip": {
+    "message": "마우스 오버 미리보기"
+  },
+  "popupVersionForLocale": {
+    "message": "기본 번역본"
+  },
+  "popupOptions": {
+    "message": "추가 옵션"
+  },
+  "optionsTitle": {
+    "message": "설정"
+  },
+  "optionsSubtitle": {
+    "message": "언어별 기본 성경 번역본을 선택하고 확장 프로그램이 실행되는 사이트를 관리하세요."
+  },
+  "optionsVersionsTitle": {
+    "message": "언어별 기본 번역본"
+  },
+  "optionsBlacklistTitle": {
+    "message": "차단된 사이트"
+  },
+  "optionsBlacklistHint": {
+    "message": "확장 프로그램이 실행되지 않을 도메인을 추가하세요. 하위 도메인은 자동으로 포함됩니다."
+  },
+  "optionsSaved": {
+    "message": "저장됨"
+  },
+  "tooltipLoading": {
+    "message": "구절을 불러오는 중…"
+  },
+  "tooltipUnavailable": {
+    "message": "구절을 사용할 수 없습니다."
+  },
+  "tooltipReadMore": {
+    "message": "Midvash에서 읽기"
+  },
+  "popupAlwaysBlockedExplanation": {
+    "message": "이 사이트는 확장 프로그램의 대상인 Midvash의 일부입니다. 여기서는 실행되지 않습니다."
+  },
+  "optionsBlacklistPlaceholder": {
+    "message": "example.com"
+  },
+  "optionsBlacklistAdd": {
+    "message": "차단"
+  },
+  "optionsBlacklistRemove": {
+    "message": "제거"
+  },
+  "optionsBlacklistEmpty": {
+    "message": "아직 차단된 사이트가 없습니다. 위에서 추가하거나 팝업을 사용하여 현재 사이트를 차단하세요."
+  },
+  "optionsAlwaysBlockedTitle": {
+    "message": "항상 차단됨"
+  },
+  "optionsAlwaysBlockedHint": {
+    "message": "이것은 Midvash 자체 사이트입니다 — 확장 프로그램은 이 사이트에서 실행되지 않으며, 이 사이트는 확장 프로그램이 사용자를 보내는 목적지입니다."
+  },
+  "popupBlockOnSite": {
+    "message": "이 사이트에서 참조 차단"
+  },
+  "popupActivateOnSite": {
+    "message": "이 사이트에서 활성화"
+  },
+  "popupCurrentSiteBlocked": {
+    "message": "이 사이트에서는 참조가 비활성화되어 있습니다."
+  },
+  "tooltipCopy": {
+    "message": "복사"
+  },
+  "tooltipCopied": {
+    "message": "복사됨!"
+  },
+  "tooltipClose": {
+    "message": "미리보기 닫기"
+  },
+  "tooltipCompareLabel": {
+    "message": "비교"
+  },
+  "tooltipCompareNone": {
+    "message": "— 없음 —"
+  },
+  "navPrevVerse": {
+    "message": "이전 절"
+  },
+  "navNextVerse": {
+    "message": "다음 절"
+  },
+  "navPrevChapter": {
+    "message": "이전 장"
+  },
+  "navNextChapter": {
+    "message": "다음 장"
+  },
+  "navWholeChapter": {
+    "message": "전체 장"
+  },
+  "popupOpenInLabel": {
+    "message": "링크 열기"
+  },
+  "popupOpenInTab": {
+    "message": "새 탭"
+  },
+  "popupOpenInSidePanel": {
+    "message": "사이드 패널"
+  },
+  "popupOpenInHint": {
+    "message": "Shift는 새 탭, Alt는 사이드 패널을 강제합니다."
+  }
+}

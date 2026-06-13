@@ -1,0 +1,217 @@
+:root {
+  color-scheme: light dark;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+.popup {
+  padding: 14px 16px 12px;
+}
+.popup__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.popup__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #b17027;
+  margin: 0;
+}
+.popup__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.popup__row:last-of-type {
+  border-bottom: none;
+}
+.popup__label {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.75);
+}
+.popup__select {
+  font-size: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 4px 6px;
+  background: #fff;
+  max-width: 160px;
+}
+.popup__hint {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.4;
+}
+.popup__switch {
+  width: 36px;
+  height: 20px;
+  position: relative;
+  display: inline-block;
+}
+.popup__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.popup__switch .slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.popup__switch .slider::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 2px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+.popup__switch input:checked + .slider {
+  background: #b17027;
+}
+.popup__switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+/* Bloco contextual do site atual */
+.popup__site-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+.popup__site-block--locked {
+  background: rgba(177, 112, 39, 0.08);
+  border-color: rgba(177, 112, 39, 0.2);
+}
+.popup__site-block-host {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  word-break: break-all;
+}
+.popup__site-block--locked .popup__site-block-host {
+  color: #b17027;
+  font-weight: 600;
+}
+.popup__site-block-message {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.75);
+}
+.popup__action-button {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #b17027;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.popup__action-button:hover {
+  background: #8a560f;
+}
+.popup__action-button--secondary {
+  background: transparent;
+  color: #b17027;
+  border: 1px solid rgba(177, 112, 39, 0.4);
+}
+.popup__action-button--secondary:hover {
+  background: rgba(177, 112, 39, 0.08);
+  color: #8a560f;
+}
+
+.popup__footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.popup__link {
+  color: #b17027;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+.popup__link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a1a;
+    color: #f0f0f0;
+  }
+  .popup__row {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  .popup__label {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .popup__select {
+    background: #2a2a2a;
+    color: #f0f0f0;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .popup__site-block {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .popup__site-block--locked {
+    background: rgba(177, 112, 39, 0.14);
+    border-color: rgba(177, 112, 39, 0.32);
+  }
+  .popup__site-block-host {
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .popup__site-block--locked .popup__site-block-host {
+    color: #d99e54;
+  }
+  .popup__site-block-message {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .popup__action-button--secondary {
+    color: #d99e54;
+    border-color: rgba(177, 112, 39, 0.5);
+  }
+  .popup__action-button--secondary:hover {
+    background: rgba(177, 112, 39, 0.14);
+    color: #e5b876;
+  }
+}
