@@ -1,90 +1,92 @@
 # Bible Chrome Extension
 
-Extensão Chrome (Manifest V3) que escaneia páginas web em busca de referências bíblicas e linka pro [midvash.com](https://midvash.com), com tooltip de preview do versículo ao passar o mouse.
+> 🌐 **English** · [Português (BR)](./README.pt-BR.md)
 
-Toda a lógica de detecção/preview consome a [API pública do Midvash](https://api.midvash.com/v1) — `/v1/books`, `/v1/versions`, `/v1/{version}/{book}/{chapter}/{verse}`.
+Chrome extension (Manifest V3) that scans web pages for Bible references and links them to [midvash.com](https://midvash.com), with a hover-preview tooltip of the verse.
+
+All detection/preview logic runs against the [public Midvash API](https://api.midvash.com/v1) — `/v1/books`, `/v1/versions`, `/v1/{version}/{book}/{chapter}/{verse}`.
 
 ## Stack
 
 - Manifest V3
 - Vite 6 + `@crxjs/vite-plugin`
 - React 19 + TypeScript (popup + options)
-- `chrome.i18n` nativo para os 9 idiomas do Midvash
+- Native `chrome.i18n` for Midvash's 9 languages
 
-## Estrutura
+## Structure
 
 ```
 apps/chrome-extension/
-├── manifest.config.ts          # MV3 declarado em TS (lido pelo crxjs)
+├── manifest.config.ts          # MV3 declared in TS (read by crxjs)
 ├── public/
-│   ├── _locales/<lang>/        # mensagens nativas chrome.i18n
+│   ├── _locales/<lang>/        # native chrome.i18n messages
 │   └── icons/                  # 16/32/48/128
 └── src/
-    ├── background.ts           # SW: refresh semanal de /v1/books e /v1/versions
+    ├── background.ts           # SW: weekly refresh of /v1/books and /v1/versions
     ├── content/                # parser + walker + linker + tooltip
-    ├── popup/                  # toggle ativo, versão, link p/ options
-    ├── options/                # versão default por locale + blacklist
+    ├── popup/                  # active toggle, version, link to options
+    ├── options/                # default version per locale + blacklist
     ├── lib/                    # api, storage, books-cache, locale, url
     └── types.ts
 ```
 
-## Desenvolvimento local
+## Local development
 
 ```bash
 pnpm install
 npm run dev
 ```
 
-O Vite gera/atualiza o bundle em `dist/` em modo watch. Carregue como **Load unpacked**:
+Vite builds/updates the bundle in `dist/` in watch mode. Load it as **Load unpacked**:
 
-1. Abra `chrome://extensions`
-2. Ative **Developer mode**
-3. Clique em **Load unpacked** e aponte para `apps/chrome-extension/dist`
-4. Edite código → recarregue a extensão pelo botão circular no card
+1. Open `chrome://extensions`
+2. Enable **Developer mode**
+3. Click **Load unpacked** and point it at `apps/chrome-extension/dist`
+4. Edit code → reload the extension via the circular button on the card
 
-## Build de produção
+## Production build
 
 ```bash
 npm run build
-npm run zip   # gera midvash-extension.zip
+npm run zip   # generates midvash-extension.zip
 ```
 
-## Release na Chrome Web Store (manual no v1)
+## Chrome Web Store release (manual in v1)
 
-1. Bump em `apps/chrome-extension/package.json` → `version`
+1. Bump `apps/chrome-extension/package.json` → `version`
 2. `npm run build && npm run zip`
-3. Upload do `apps/chrome-extension/midvash-extension.zip` no [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
-4. Aguardar review (3-7 dias na primeira submissão; horas em updates)
+3. Upload `apps/chrome-extension/midvash-extension.zip` to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+4. Wait for review (3–7 days on first submission; hours for updates)
 
-## Permissões
+## Permissions
 
-| Permissão | Por quê |
+| Permission | Why |
 |---|---|
-| `storage` | guardar prefs (versão por locale, blacklist) e cache de `/v1/books` |
-| `alarms` | refresh semanal do índice de livros via service worker |
-| `host_permissions: api.midvash.com` | fetch da API pública (não envia conteúdo da página) |
-| `content_scripts: <all_urls>` | rodar em qualquer site, mas o script roda inteiramente no cliente |
+| `storage` | store prefs (version per locale, blacklist) and the `/v1/books` cache |
+| `alarms` | weekly refresh of the book index via service worker |
+| `host_permissions: api.midvash.com` | fetch the public API (never sends page content) |
+| `content_scripts: <all_urls>` | run on any site, but the script runs entirely on the client |
 
-## Privacidade
+## Privacy
 
-A extensão **não envia conteúdo da página** pra lugar nenhum. Só faz `GET` em `api.midvash.com` com a referência detectada (ex: `joao 3:16`) pra buscar o texto do versículo. Prefs do usuário ficam em `chrome.storage.local`, não saem do navegador.
+The extension **never sends page content** anywhere. It only makes a `GET` to `api.midvash.com` with the detected reference (e.g. `john 3:16`) to fetch the verse text. User prefs live in `chrome.storage.local` and never leave the browser.
 
-Texto canônico da política de privacidade (a publicar em `midvash.app`): [`docs/PRIVACY.md`](./docs/PRIVACY.md).
+Canonical privacy-policy text (to be published at `midvash.app`): [`docs/PRIVACY.md`](./docs/PRIVACY.md).
 
-## Submissão à Chrome Web Store
+## Chrome Web Store submission
 
-Tudo que precisa pra submeter está em `docs/`:
+Everything needed to submit is in `docs/`:
 
-- **[`docs/SUBMISSION.md`](./docs/SUBMISSION.md)** — todos os textos prontos pra colar no dashboard (title, descriptions, justificativas de permissão, single purpose statement, especificação dos screenshots).
-- **[`docs/PRIVACY.md`](./docs/PRIVACY.md)** — texto canônico da política de privacidade pra publicar em `midvash.app`.
-- **[`docs/CHECKLIST.md`](./docs/CHECKLIST.md)** — checklist final antes de clicar "Submit for Review".
+- **[`docs/SUBMISSION.md`](./docs/SUBMISSION.md)** — all the copy ready to paste into the dashboard (title, descriptions, permission justifications, single purpose statement, screenshot spec).
+- **[`docs/PRIVACY.md`](./docs/PRIVACY.md)** — canonical privacy-policy text to publish at `midvash.app`.
+- **[`docs/CHECKLIST.md`](./docs/CHECKLIST.md)** — final checklist before clicking "Submit for Review".
 
-### Pendências antes da primeira submissão
+### Before the first submission
 
-1. Privacy Policy publicada em URL pública de `midvash.app` (texto pronto em `PRIVACY.md`)
-2. `homepage_url` em `manifest.config.ts` atualizada pra `https://midvash.app`
-3. 5 screenshots 1280×800 + small promo tile 440×280 (especificações em `SUBMISSION.md` §4)
-4. Conta Chrome Web Store Developer ($5) com 2FA ativado
+1. Privacy Policy published at a public `midvash.app` URL (text ready in `PRIVACY.md`)
+2. `homepage_url` in `manifest.config.ts` updated to `https://midvash.app`
+3. 5 screenshots 1280×800 + small promo tile 440×280 (specs in `SUBMISSION.md` §4)
+4. Chrome Web Store Developer account ($5) with 2FA enabled
 
 ## The Midvash ecosystem
 
