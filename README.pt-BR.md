@@ -1,6 +1,6 @@
 # Bible Chrome Extension
 
-> 🌐 [English](./README.md) · **Português (BR)**
+> 🌐 [English](./README.md) · **Português (BR)** · [Español](./README.es.md)
 
 Extensão Chrome (Manifest V3) que escaneia páginas web em busca de referências bíblicas e linka pro [midvash.com](https://midvash.com), com tooltip de preview do versículo ao passar o mouse.
 
