@@ -1,4 +1,5 @@
 import { fetchBooks, fetchVersions } from './api';
+import { hasPluginKey } from './plugin-key';
 import {
   BOOKS_TTL_MS,
   STORAGE_KEYS,
@@ -72,20 +73,27 @@ export async function getBooksOptimistic(): Promise<{
   return { cached: stored?.data ?? null, fresh };
 }
 
+/**
+ * Com a chave de plugin `/v1/versions` lista também as restritas: guarda em
+ * outra chave do storage pra uma lista não servir no lugar da outra.
+ */
+function versionKeys(): { key: string; tsKey: string } {
+  const suffix = hasPluginKey() ? ':key' : '';
+  return {
+    key: STORAGE_KEYS.versions + suffix,
+    tsKey: STORAGE_KEYS.versionsFetchedAt + suffix,
+  };
+}
+
 export async function getVersions(forceRefresh = false): Promise<VersionEntry[]> {
+  const { key, tsKey } = versionKeys();
   if (!forceRefresh) {
-    const cached = await readCached<VersionEntry[]>(
-      STORAGE_KEYS.versions,
-      STORAGE_KEYS.versionsFetchedAt,
-    );
+    const cached = await readCached<VersionEntry[]>(key, tsKey);
     if (cached && Date.now() - cached.fetchedAt < BOOKS_TTL_MS) {
       return cached.data;
     }
   }
   const data = await fetchVersions();
-  await chrome.storage.local.set({
-    [STORAGE_KEYS.versions]: data,
-    [STORAGE_KEYS.versionsFetchedAt]: Date.now(),
-  });
+  await chrome.storage.local.set({ [key]: data, [tsKey]: Date.now() });
   return data;
 }

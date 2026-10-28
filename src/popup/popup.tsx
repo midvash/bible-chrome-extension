@@ -6,6 +6,7 @@ import { matchLocale } from '../lib/locale';
 import { isAlwaysBlocked, isUserBlocked } from '../lib/blocklist';
 import {
   DEFAULT_VERSIONS,
+  versionLabel,
   type ExtensionPrefs,
   type Locale,
   type VersionEntry,
@@ -173,7 +174,7 @@ function App() {
           >
             {versionsForLocale(pageLocale).map((v) => (
               <option key={v.slug} value={v.slug}>
-                {v.shortName} — {v.name}
+                {versionLabel(v)}
               </option>
             ))}
           </select>

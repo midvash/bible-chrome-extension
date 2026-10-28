@@ -6,7 +6,8 @@
  */
 import { buildLookup, findMatches, parseVerseList } from '../src/content/parser.ts';
 import { creditLine } from '../src/lib/credit.ts';
-import { DEFAULT_VERSIONS, servedVersion, type BookEntry, type Locale } from '../src/types.ts';
+import { apiHeaders, cacheScope, MIDVASH_PLUGIN_KEY } from '../src/lib/plugin-key.ts';
+import { DEFAULT_VERSIONS, servedVersion, versionLabel, type BookEntry, type Locale } from '../src/types.ts';
 
 function makeBook(
   id: number,
@@ -334,6 +335,19 @@ function run(): void {
       expect: 'King James Version (KJV) · Public Domain',
     },
     { name: 'sem copyright → sem crédito', got: creditLine(undefined), expect: undefined },
+    { name: 'chave de plugin vazia no código aberto', got: MIDVASH_PLUGIN_KEY, expect: '' },
+    { name: 'sem chave, nenhum header X-Midvash-Plugin-Key', got: apiHeaders(), expect: { Accept: 'application/json' } },
+    { name: 'sem chave, cache no escopo aberto', got: cacheScope(), expect: 'open' },
+    {
+      name: 'versão restrita ganha © no seletor',
+      got: versionLabel({ shortName: 'NVI', name: 'Nova Versão Internacional', restricted: true }),
+      expect: '© NVI — Nova Versão Internacional',
+    },
+    {
+      name: 'versão livre fica sem ©',
+      got: versionLabel({ shortName: 'ONBV', name: 'Open Nova Bíblia Viva' }),
+      expect: 'ONBV — Open Nova Bíblia Viva',
+    },
   ];
   for (const c of checks) {
     if (eq(c.got, c.expect)) {

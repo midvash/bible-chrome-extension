@@ -7,6 +7,7 @@ import { normalizeHostInput } from '../lib/blocklist';
 import {
   ALWAYS_BLOCKED_HOSTS,
   DEFAULT_VERSIONS,
+  versionLabel,
   SUPPORTED_LOCALES,
   type ExtensionPrefs,
   type Locale,
@@ -109,7 +110,7 @@ function App() {
                   {list.length === 0 && <option value={value}>{value}</option>}
                   {list.map((v) => (
                     <option key={v.slug} value={v.slug}>
-                      {v.shortName} — {v.name}
+                      {versionLabel(v)}
                     </option>
                   ))}
                 </select>

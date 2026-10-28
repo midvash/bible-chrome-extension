@@ -1,8 +1,9 @@
 import { fetchVerse } from '../lib/api';
 import { creditLine } from '../lib/credit';
+import { cacheScope } from '../lib/plugin-key';
 import { readerUrl } from '../lib/url';
 import tooltipCss from './tooltip.css?inline';
-import { servedVersion, type Locale, type VerseResponse, type VersionEntry } from '../types';
+import { servedVersion, versionLabel, type Locale, type VerseResponse, type VersionEntry } from '../types';
 
 interface TooltipDeps {
   locale: Locale;
@@ -139,7 +140,7 @@ function populateCompareSelect(el: HTMLDivElement, deps: TooltipDeps): void {
   for (const v of deps.versionsForLocale) {
     const opt = document.createElement('option');
     opt.value = v.slug;
-    opt.textContent = `${v.shortName} — ${v.name}`;
+    opt.textContent = versionLabel(v);
     select.appendChild(opt);
   }
   select.value = currentCompareVersion ?? '';
@@ -205,7 +206,9 @@ function cacheKeyFor(
   vStart?: string,
   vEnd?: string,
 ): string {
-  return [version, book, chapter, vStart ?? '', vEnd ?? ''].join('|');
+  // O escopo (com ou sem chave de plugin) entra na chave: com a chave, "nvi"
+  // é a NVI; sem ela, a API devolve a ONBV no lugar. Uma não serve pela outra.
+  return [cacheScope(), version, book, chapter, vStart ?? '', vEnd ?? ''].join('|');
 }
 
 function cacheKeyFromAnchor(a: HTMLAnchorElement, overrideVersion?: string): string {
