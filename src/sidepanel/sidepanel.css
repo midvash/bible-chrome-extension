@@ -137,6 +137,13 @@ body {
   border-top: 1px solid var(--color-border);
   background: var(--color-bg-subtle);
 }
+.panel__credit {
+  margin: 0 0 6px;
+  font-size: 11px;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--color-fg-muted);
+}
 .panel__open-link {
   display: block;
   text-align: center;

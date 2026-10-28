@@ -38,6 +38,8 @@ The extension uses `chrome.storage.local` to keep:
 - **User preferences**: default Bible version per language, comparison version per language, list of sites where the extension is disabled, tooltip on/off setting, and where links open (new tab or side panel).
 - **Cache of public Bible content**: the book index and the version list, refreshed weekly to avoid hitting the API on every page.
 
+It also uses `chrome.storage.session` to keep the verses already shown in a preview, so hovering the same reference again does not repeat the request. Chrome clears this cache when the browser closes.
+
 This data is stored only on your device. It is not uploaded, shared, or transmitted.
 
 ## 6. Permissions

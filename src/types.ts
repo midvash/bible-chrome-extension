@@ -107,7 +107,7 @@ export const DEFAULT_VERSIONS: Record<Locale, string> = {
   de: 'luth1912',
   fr: 'lsg',
   it: 'riveduta',
-  zh: 'cuv',
+  zh: 'cuvs',
   ru: 'synodal',
   ko: 'kor',
 };
@@ -125,6 +125,8 @@ export const RETIRED_VERSIONS: Readonly<Record<string, string>> = {
   // Erros de digitação dos padrões da v1.1.0 (404 na API)
   rivedut: 'riveduta',
   krv: 'kor',
+  // Italiano
+  nri: 'riveduta',
   // Português
   naa: 'almeida-livre',
   ara: 'almeida-livre',
@@ -140,6 +142,8 @@ export const RETIRED_VERSIONS: Readonly<Record<string, string>> = {
   msgpt: 'onbv',
   nbv: 'onbv',
   aa: 'almeida-livre',
+  bpt: 'almeida-livre',
+  ol: 'onbv',
   // Inglês
   esv: 'bsb',
   niv: 'bsb',

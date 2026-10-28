@@ -1,6 +1,7 @@
 import { fetchVerse } from '../lib/api';
 import { creditLine } from '../lib/credit';
 import { readerUrl } from '../lib/url';
+import tooltipCss from './tooltip.css?inline';
 import { servedVersion, type Locale, type VerseResponse, type VersionEntry } from '../types';
 
 interface TooltipDeps {
@@ -27,6 +28,8 @@ const PREVIEW_VERSE_LIMIT = 4;
 const memCache = new Map<string, VerseResponse>();
 
 let tooltipEl: HTMLDivElement | null = null;
+/** Elemento na página que guarda o shadow root do tooltip. */
+let tooltipHost: HTMLElement | null = null;
 let activeAnchor: HTMLAnchorElement | null = null;
 let showTimer: number | null = null;
 let hideTimer: number | null = null;
@@ -37,7 +40,6 @@ let currentCompareVersion: string | null = null;
 function ensureTooltip(deps: TooltipDeps): HTMLDivElement {
   if (tooltipEl) return tooltipEl;
   const el = document.createElement('div');
-  el.id = TOOLTIP_ID;
   el.className = 'midvash-tooltip';
   el.setAttribute('role', 'tooltip');
   el.setAttribute('aria-hidden', 'true');
@@ -100,7 +102,19 @@ function ensureTooltip(deps: TooltipDeps): HTMLDivElement {
     });
   }
 
-  document.body.appendChild(el);
+  // O tooltip mora num shadow root: o CSS do site (`a{color:red!important}`,
+  // `section{display:flex}`) não chega nele, e o dele não vaza pro site. Tag
+  // própria pra que seletores de `div` da página não peguem o host.
+  const host = document.createElement('midvash-tooltip-host');
+  host.id = TOOLTIP_ID;
+  host.style.cssText =
+    'all:initial;position:absolute;top:0;left:0;width:0;height:0;z-index:2147483647;';
+  const shadow = host.attachShadow({ mode: 'open' });
+  const style = document.createElement('style');
+  style.textContent = tooltipCss;
+  shadow.append(style, el);
+  document.body.appendChild(host);
+  tooltipHost = host;
   tooltipEl = el;
   return el;
 }
@@ -311,7 +325,8 @@ function setVerse(
   more.href = readerUrl(
     deps.locale,
     verse.data.version,
-    verse.data.book,
+    // A API devolve o slug em inglês ("john"); o do idioma veio do parser.
+    anchor.dataset.midvashBook ?? verse.data.book,
     verse.data.chapter,
     verse.data.verse,
     verse.data.verseEnd,
@@ -355,17 +370,17 @@ function buildCitation(verse: VerseResponse, anchor: HTMLAnchorElement): string 
   const ref = anchorReference(anchor);
   const version = verse.data.version.toUpperCase();
   const url = anchor.href;
+  let body = url;
   if (verse.data.text) {
-    return `${ref} (${version}) — ${verse.data.text.trim()}`;
-  }
-  if (verse.data.verses?.length) {
+    body = verse.data.text.trim();
+  } else if (verse.data.verses?.length) {
     const limited = verse.data.verses.slice(0, PREVIEW_VERSE_LIMIT);
-    const body = limited.map((t, i) => `${i + 1} ${t.trim()}`).join(' ');
     const truncated = verse.data.verses.length > PREVIEW_VERSE_LIMIT;
-    const tail = truncated ? ` … (${url})` : '';
-    return `${ref} (${version}) — ${body}${tail}`;
+    body = limited.map((t, i) => `${i + 1} ${t.trim()}`).join(' ') + (truncated ? ` … (${url})` : '');
   }
-  return `${ref} (${version}) — ${url}`;
+  // O crédito vai junto do texto copiado: CC BY exige atribuição onde ele for colado.
+  const credit = creditLine(verse.meta?.copyright);
+  return `${ref} (${version}) — ${body}${credit ? `\n${credit}` : ''}`;
 }
 
 async function copyToClipboard(text: string): Promise<boolean> {
@@ -584,7 +599,9 @@ export function attachTooltip(deps: TooltipDeps): () => void {
     );
     if (!target) return;
     const next = event.relatedTarget as Element | null;
-    if (next && tooltipEl?.contains(next)) return;
+    // Foco que entra no tooltip chega aqui como o host (o shadow root
+    // reapresenta o alvo), então compara com ele também.
+    if (next && (next === tooltipHost || tooltipEl?.contains(next))) return;
     scheduleHide();
   };
 

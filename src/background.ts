@@ -77,15 +77,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   const path = buildSidePanelPath(message as OpenSidePanelMessage);
-  void (async () => {
-    try {
-      await chrome.sidePanel.setOptions({ tabId, path, enabled: true });
-      await chrome.sidePanel.open({ tabId });
-      sendResponse({ ok: true });
-    } catch (err) {
+  // `open()` só vale dentro do gesto do usuário: um `await` antes dele (como
+  // esperar o `setOptions`) já perde o gesto e o Chrome recusa. As duas
+  // chamadas saem na mesma volta, na ordem em que o Chrome as executa.
+  const setOptions = chrome.sidePanel.setOptions({ tabId, path, enabled: true });
+  const open = chrome.sidePanel.open({ tabId });
+  Promise.all([setOptions, open]).then(
+    () => sendResponse({ ok: true }),
+    (err) => {
       console.warn('[Midvash] failed to open side panel', err);
       sendResponse({ ok: false, error: String(err) });
-    }
-  })();
+    },
+  );
   return true; // async response
 });

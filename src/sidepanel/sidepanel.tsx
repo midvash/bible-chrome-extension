@@ -1,6 +1,7 @@
 import { StrictMode, useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { fetchVerse } from '../lib/api';
+import { creditLine } from '../lib/credit';
 import { readerUrl } from '../lib/url';
 import { servedVersion, type Locale, type VerseResponse } from '../types';
 import './sidepanel.css';
@@ -145,6 +146,8 @@ function App() {
   }
 
   const reference = buildReference(params);
+  // Crédito da versão servida (título · licença): CC BY exige junto do texto.
+  const credit = creditLine(verse?.meta?.copyright);
   const fullReaderHref = readerUrl(
     params.locale,
     params.version,
@@ -203,6 +206,11 @@ function App() {
       </div>
 
       <footer className="panel__footer">
+        {credit && (
+          <p className="panel__credit" title={verse?.meta?.copyright?.trim()}>
+            {credit}
+          </p>
+        )}
         <a
           className="panel__open-link"
           href={fullReaderHref}

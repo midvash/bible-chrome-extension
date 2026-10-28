@@ -4,12 +4,13 @@ import { urlLocaleSegment } from './locale';
 /**
  * URL canônica do leitor no midvash.com.
  *
- * Formato suportado pelo route `[locale]/[version]/[book]/[chapter]/[[...verse]]`:
+ * Já no formato final, sem 301 no caminho (`/3/16` redireciona pra `/3#v=16`):
  *   - capítulo inteiro:        /{loc}/{ver}/{book}/{chapter}
- *   - versículo único:         /{loc}/{ver}/{book}/{chapter}/{verse}
- *   - intervalo de versículos: /{loc}/{ver}/{book}/{chapter}/{start}-{end}
+ *   - versículo único:         /{loc}/{ver}/{book}/{chapter}#v={verse}
+ *   - intervalo de versículos: /{loc}/{ver}/{book}/{chapter}#v={start}-{end}
  *
- * Inglês é locale padrão, sem prefixo.
+ * `bookSlug` é o slug do livro no idioma (`joao`, não `john`), senão o site
+ * redireciona. Inglês é locale padrão, sem prefixo.
  */
 export function readerUrl(
   locale: Locale,
@@ -20,12 +21,12 @@ export function readerUrl(
   verseEnd?: number,
 ): string {
   const seg = urlLocaleSegment(locale);
-  let versePath = '';
+  let hash = '';
   if (verseStart) {
-    versePath =
+    hash =
       verseEnd && verseEnd !== verseStart
-        ? `/${verseStart}-${verseEnd}`
-        : `/${verseStart}`;
+        ? `#v=${verseStart}-${verseEnd}`
+        : `#v=${verseStart}`;
   }
-  return `${SITE_BASE}${seg}/${version}/${bookSlug}/${chapter}${versePath}`;
+  return `${SITE_BASE}${seg}/${version}/${bookSlug}/${chapter}${hash}`;
 }
