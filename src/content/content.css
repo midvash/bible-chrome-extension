@@ -182,6 +182,17 @@ a.midvash-ref:focus {
   border-radius: 2px;
 }
 
+/* Crédito da versão (título · licença): CC BY exige junto do texto. */
+.midvash-tooltip__credit {
+  margin: 8px 0 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 11px;
+  line-height: 1.35;
+}
+.midvash-tooltip__credit[hidden] {
+  display: none;
+}
+
 /* Foco visível no anchor da referência inline — a11y */
 a.midvash-ref:focus-visible {
   outline: 2px solid rgba(177, 112, 39, 0.6);
@@ -190,6 +201,9 @@ a.midvash-ref:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
+  .midvash-tooltip__credit {
+    color: rgba(255, 255, 255, 0.5);
+  }
   .midvash-tooltip__copy {
     color: rgba(255, 255, 255, 0.6);
     border-color: rgba(255, 255, 255, 0.15);

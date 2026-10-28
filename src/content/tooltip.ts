@@ -1,6 +1,7 @@
 import { fetchVerse } from '../lib/api';
+import { creditLine } from '../lib/credit';
 import { readerUrl } from '../lib/url';
-import type { Locale, VerseResponse, VersionEntry } from '../types';
+import { servedVersion, type Locale, type VerseResponse, type VersionEntry } from '../types';
 
 interface TooltipDeps {
   locale: Locale;
@@ -54,6 +55,7 @@ function ensureTooltip(deps: TooltipDeps): HTMLDivElement {
         <p class="midvash-tooltip__compare-text"></p>
       </section>
     </div>
+    <p class="midvash-tooltip__credit" hidden></p>
     <div class="midvash-tooltip__compare-row">
       <label class="midvash-tooltip__compare-label" for="midvash-tooltip-compare"></label>
       <select id="midvash-tooltip-compare" class="midvash-tooltip__compare-select"></select>
@@ -231,9 +233,12 @@ async function setInSession(key: string, value: VerseResponse): Promise<void> {
 function setLoading(el: HTMLDivElement, anchor: HTMLAnchorElement, deps: TooltipDeps) {
   const refLabel = anchorReference(anchor);
   el.querySelector<HTMLElement>('.midvash-tooltip__reference')!.textContent = refLabel;
-  el.querySelector<HTMLElement>('.midvash-tooltip__version')!.textContent = (
-    anchor.dataset.midvashVersion ?? ''
+  // Enquanto carrega, o selo já mostra a versão que a API vai servir (um
+  // slug que saiu da API volta como a versão livre no lugar dele).
+  el.querySelector<HTMLElement>('.midvash-tooltip__version')!.textContent = servedVersion(
+    anchor.dataset.midvashVersion ?? '',
   ).toUpperCase();
+  setCredit(el, undefined);
   el.querySelector<HTMLElement>('.midvash-tooltip__text')!.textContent =
     deps.i18n('tooltipLoading');
   // Reset compare section.
@@ -241,7 +246,7 @@ function setLoading(el: HTMLDivElement, anchor: HTMLAnchorElement, deps: Tooltip
   if (compareSection) compareSection.hidden = !currentCompareVersion;
   if (compareSection && currentCompareVersion) {
     const label = compareSection.querySelector<HTMLElement>('.midvash-tooltip__section-label');
-    if (label) label.textContent = currentCompareVersion.toUpperCase();
+    if (label) label.textContent = servedVersion(currentCompareVersion).toUpperCase();
     const text = compareSection.querySelector<HTMLElement>('.midvash-tooltip__compare-text');
     if (text) text.textContent = deps.i18n('tooltipLoading');
   }
@@ -294,8 +299,10 @@ function setVerse(
   // do meta.reference da API, que vem em inglês ("Judges" em vez de "Juízes").
   el.querySelector<HTMLElement>('.midvash-tooltip__reference')!.textContent =
     anchorReference(anchor);
+  // `data.version` é a versão que veio de fato, não o slug pedido.
   el.querySelector<HTMLElement>('.midvash-tooltip__version')!.textContent =
     verse.data.version.toUpperCase();
+  setCredit(el, verse.meta?.copyright);
 
   const textEl = el.querySelector<HTMLElement>('.midvash-tooltip__text')!;
   renderVerseText(textEl, verse, deps.i18n('tooltipUnavailable'));
@@ -315,6 +322,16 @@ function setVerse(
   copy.textContent = deps.i18n('tooltipCopy');
   copy.classList.remove('midvash-tooltip__copy--success');
   copy.disabled = false;
+}
+
+/** Mostra o crédito da versão no rodapé; o aviso inteiro aparece ao passar o mouse. */
+function setCredit(el: HTMLDivElement, copyright: string | undefined) {
+  const credit = el.querySelector<HTMLElement>('.midvash-tooltip__credit')!;
+  const line = creditLine(copyright);
+  credit.hidden = !line;
+  credit.textContent = line ?? '';
+  if (line && copyright) credit.title = copyright.trim();
+  else credit.removeAttribute('title');
 }
 
 function setError(el: HTMLDivElement, deps: TooltipDeps) {
@@ -463,7 +480,7 @@ async function refreshCompareSection(anchor: HTMLAnchorElement, deps: TooltipDep
 
   section.hidden = false;
   const label = section.querySelector<HTMLElement>('.midvash-tooltip__section-label');
-  if (label) label.textContent = currentCompareVersion.toUpperCase();
+  if (label) label.textContent = servedVersion(currentCompareVersion).toUpperCase();
   const text = section.querySelector<HTMLElement>('.midvash-tooltip__compare-text');
   if (text) text.textContent = deps.i18n('tooltipLoading');
   position(anchor, tooltipEl);
@@ -474,6 +491,7 @@ async function refreshCompareSection(anchor: HTMLAnchorElement, deps: TooltipDep
   if (!verse) {
     text.textContent = deps.i18n('tooltipUnavailable');
   } else {
+    if (label) label.textContent = verse.data.version.toUpperCase();
     renderVerseText(text, verse, deps.i18n('tooltipUnavailable'));
   }
   position(anchor, tooltipEl);
@@ -518,6 +536,8 @@ async function showFor(anchor: HTMLAnchorElement, deps: TooltipDeps) {
     const text = section?.querySelector<HTMLElement>('.midvash-tooltip__compare-text');
     if (text) {
       if (compare) {
+        const label = section?.querySelector<HTMLElement>('.midvash-tooltip__section-label');
+        if (label) label.textContent = compare.data.version.toUpperCase();
         renderVerseText(text, compare, deps.i18n('tooltipUnavailable'));
       } else {
         text.textContent = deps.i18n('tooltipUnavailable');

@@ -1,4 +1,5 @@
 import { getBooks, getVersions } from './lib/books-cache';
+import { migrateStoredPrefs } from './lib/storage';
 
 const REFRESH_ALARM = 'midvash:refresh-books';
 const SIDEPANEL_BASE_PATH = 'src/sidepanel/index.html';
@@ -12,6 +13,11 @@ async function refreshAll() {
 }
 
 chrome.runtime.onInstalled.addListener(async () => {
+  try {
+    await migrateStoredPrefs();
+  } catch (err) {
+    console.warn('[Midvash] prefs migration failed', err);
+  }
   await refreshAll();
   await chrome.alarms.create(REFRESH_ALARM, {
     periodInMinutes: 60 * 24 * 7, // semanal

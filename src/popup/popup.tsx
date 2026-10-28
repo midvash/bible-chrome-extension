@@ -204,11 +204,11 @@ function App() {
         </button>
         <a
           className="popup__link"
-          href="https://midvash.app/chrome-extension"
+          href="https://midvash.com/chrome-extension"
           target="_blank"
           rel="noopener noreferrer"
         >
-          midvash.app
+          midvash.com
         </a>
       </div>
     </div>

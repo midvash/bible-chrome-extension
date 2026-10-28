@@ -1,14 +1,14 @@
-# Privacy Policy — Texto pra publicar em midvash.app
+# Privacy Policy — Texto canônico
 
-Este é o **template canônico** da política de privacidade da extensão Chrome do Midvash. Deve ser publicado em uma rota pública de `midvash.app` (sugestão: `/chrome-extension/privacy`) **antes** da submissão à Chrome Web Store. Sem URL pública 200 OK, a extensão não passa no review e fica marcada como "lacking privacy information".
+Este é o **texto canônico** da política de privacidade da extensão Chrome do Midvash. A versão pública mora em **https://midvash.com/chrome-extension/privacy** (página `apps/web/src/pages/chrome-extension/privacy.astro` do monorepo do Midvash). Sem essa URL pública 200 OK, a extensão não passa no review da Chrome Web Store.
 
-> Atualize o campo `Last updated` para a data real de publicação. Substitua `<EMAIL_DE_CONTATO>` por um endereço real. O texto pode ser traduzido para os outros idiomas, mas a versão em inglês é suficiente.
+> Mudou este texto? Atualize o `Last updated` e a página pública junto.
 
 ---
 
 # Midvash Chrome Extension — Privacy Policy
 
-**Last updated: <YYYY-MM-DD>**
+**Last updated: 2026-10-28**
 
 ## 1. Summary
 
@@ -35,7 +35,7 @@ Request payloads contain only Bible reference identifiers (book slug, chapter, v
 
 The extension uses `chrome.storage.local` to keep:
 
-- **User preferences**: default Bible version per language, list of sites where the extension is disabled, tooltip on/off setting.
+- **User preferences**: default Bible version per language, comparison version per language, list of sites where the extension is disabled, tooltip on/off setting, and where links open (new tab or side panel).
 - **Cache of public Bible content**: the book index and the version list, refreshed weekly to avoid hitting the API on every page.
 
 This data is stored only on your device. It is not uploaded, shared, or transmitted.
@@ -48,6 +48,8 @@ The extension requests the minimum permissions required for its single purpose:
 |---|---|
 | `storage` | Save preferences and the local cache of public Bible content. |
 | `alarms` | Trigger a weekly background refresh of the cached book/version index. |
+| `activeTab` | Read the hostname of the current tab when you open the popup, to offer the "disable on this site" toggle. |
+| `sidePanel` | Show a passage in Chrome's side panel when you choose to open references there. The panel fetches the text from the API described in §4. |
 | `host_permissions: https://api.midvash.com/*` | Make the API requests described in §4. |
 | `content_scripts: <all_urls>` | Run the local-only reference detector on any page you read. |
 
@@ -69,4 +71,4 @@ If this policy materially changes, the updated version will be published at the 
 
 ## 11. Contact
 
-For questions or requests related to this policy, contact <EMAIL_DE_CONTATO>.
+For questions or requests related to this policy, contact contact@midvash.com.

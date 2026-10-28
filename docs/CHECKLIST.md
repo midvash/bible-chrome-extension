@@ -7,9 +7,9 @@ Use isso como checklist final antes de submeter.
 - [ ] Conta de Developer da Chrome Web Store criada (US$5 lifetime fee paga)
 - [ ] **2-Step Verification** ativado na conta Google associada
 - [ ] Privacy Policy publicada em URL pública (200 OK, sem auth) — ver `PRIVACY.md`
-- [ ] `homepage_url` em `manifest.config.ts` apontando pra URL final (`midvash.app`)
+- [ ] `homepage_url` em `manifest.config.ts` apontando pra URL final (`https://midvash.com/chrome-extension`)
 - [ ] Versão em `package.json` bumped (sem letras, formato `X.Y.Z`)
-- [ ] `pnpm typecheck` ✓
+- [ ] `npm run typecheck` ✓
 - [ ] `npm run build` ✓
 - [ ] Testado local via Load unpacked numa página real com refs em PT, EN, ES
 
@@ -62,5 +62,5 @@ Use isso como checklist final antes de submeter.
 ## Pós-aprovação
 
 - [x] URL pública anotada: https://chromewebstore.google.com/detail/midvash-links-b%C3%ADblicos/pfgneahhammonobdfheebefijejhcaej (publicada em jun/2026, v1.1.0)
-- [ ] Linkar em midvash.com / midvash.app / README / redes sociais
+- [ ] Linkar em midvash.com / README / redes sociais
 - [ ] Próximos updates: bump version → build → zip → upload → submit (sem refazer todo o checklist; só re-submit basta)
