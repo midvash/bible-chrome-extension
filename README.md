@@ -81,6 +81,10 @@ CI (`.github/workflows/ci.yml`) runs both on every push and PR.
 | `host_permissions: api.midvash.com` | fetch the public API (never sends page content) |
 | `content_scripts: <all_urls>` | run on any site, but the script runs entirely on the client |
 
+## Plugin key (optional)
+
+`src/lib/plugin-key.ts` has `MIDVASH_PLUGIN_KEY`, empty in this repo. Empty, the extension uses only the openly licensed versions. With a key, every API call sends `X-Midvash-Plugin-Key`, `/v1/versions` also lists the versions with reserved rights (marked with © in the selectors) and the API serves them as asked. A key inside a browser extension is readable by anyone who opens the package.
+
 ## Privacy
 
 The extension **never sends page content** anywhere. It only makes a `GET` to `api.midvash.com` with the detected reference (e.g. `john 3:16`) to fetch the verse text. User prefs live in `chrome.storage.local` and never leave the browser.

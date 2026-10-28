@@ -1,3 +1,5 @@
+import { hasPluginKey } from './lib/plugin-key';
+
 export type Locale =
   | 'en'
   | 'pt-br'
@@ -38,6 +40,8 @@ export interface VersionEntry {
   language: string;
   hasOldTestament: boolean;
   hasNewTestament: boolean;
+  /** Versão com direitos reservados: só vem com a chave de plugin. */
+  restricted?: boolean;
   totalBooks: number;
   totalChapters: number;
 }
@@ -156,10 +160,23 @@ export const RETIRED_VERSIONS: Readonly<Record<string, string>> = {
   ntv: 'onbv-es',
 };
 
-/** A versão que a API serve pra `slug`: a substituta livre se ela saiu. */
+/** Slugs que nunca existiram na API: corrige com ou sem chave. */
+const TYPO_VERSIONS: ReadonlySet<string> = new Set(['rivedut', 'krv']);
+
+/**
+ * A versão que a API serve pra `slug`: a substituta livre se ela saiu. Com a
+ * chave de plugin a API serve a versão restrita de verdade, então só os
+ * erros de digitação são trocados.
+ */
 export function servedVersion(slug: string): string {
   const key = slug.toLowerCase();
+  if (hasPluginKey() && !TYPO_VERSIONS.has(key)) return key;
   return RETIRED_VERSIONS[key] ?? key;
+}
+
+/** Rótulo de uma versão nos seletores; © marca a que tem direitos reservados. */
+export function versionLabel(v: Pick<VersionEntry, 'shortName' | 'name' | 'restricted'>): string {
+  return `${v.restricted ? '© ' : ''}${v.shortName} — ${v.name}`;
 }
 
 export const DEFAULT_PREFS: ExtensionPrefs = {

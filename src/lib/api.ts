@@ -1,4 +1,7 @@
 import { API_BASE, type BookEntry, type VerseResponse, type VersionEntry } from '../types';
+import { apiHeaders } from './plugin-key';
+
+export { MIDVASH_PLUGIN_KEY } from './plugin-key';
 
 interface ApiEnvelope<T> {
   data: T;
@@ -6,7 +9,7 @@ interface ApiEnvelope<T> {
 }
 
 async function getJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { Accept: 'application/json' } });
+  const res = await fetch(url, { headers: apiHeaders() });
   if (!res.ok) {
     throw new Error(`API ${res.status} ${res.statusText} — ${url}`);
   }
@@ -36,7 +39,7 @@ export async function fetchVerse(
         ? `/${verseStart}`
         : '';
   const url = `${API_BASE}/${version}/${bookSlug}/${chapter}${verses}`;
-  const res = await fetch(url, { headers: { Accept: 'application/json' } });
+  const res = await fetch(url, { headers: apiHeaders() });
   if (!res.ok) {
     throw new Error(`API ${res.status} ${res.statusText} — ${url}`);
   }
