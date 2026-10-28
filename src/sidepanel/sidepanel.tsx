@@ -2,7 +2,7 @@ import { StrictMode, useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { fetchVerse } from '../lib/api';
 import { readerUrl } from '../lib/url';
-import type { Locale, VerseResponse } from '../types';
+import { servedVersion, type Locale, type VerseResponse } from '../types';
 import './sidepanel.css';
 
 const t = (key: string): string => {
@@ -159,7 +159,9 @@ function App() {
       <header className="panel__header">
         <div className="panel__brand">Midvash</div>
         <h1 className="panel__reference">{reference}</h1>
-        <div className="panel__version">{params.version.toUpperCase()}</div>
+        <div className="panel__version">
+          {(verse?.data.version ?? servedVersion(params.version)).toUpperCase()}
+        </div>
       </header>
 
       <div className="panel__nav">

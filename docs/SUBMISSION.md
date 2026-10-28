@@ -53,7 +53,7 @@ OPEN AND TRANSPARENT
 The extension is built on the public Midvash API (api.midvash.com) which serves Bible content from public-domain and licensed translations. Source code is part of the open Midvash project.
 
 PRIVACY POLICY
-See the privacy policy at https://midvash.app/chrome-extension/privacy/
+See the privacy policy at https://midvash.com/chrome-extension/privacy
 ```
 
 ### Category
@@ -69,7 +69,7 @@ https://midvash.com/contact   (ou URL de suporte do Midvash)
 
 ### Homepage URL
 ```
-https://midvash.app/chrome-extension
+https://midvash.com/chrome-extension
 ```
 
 ---
@@ -88,6 +88,7 @@ Detect Bible scripture references on web pages the user reads and link them to t
 |---|---|
 | `storage` | Stores user preferences (default Bible version per language, blocked sites, tooltip toggle) and a 7-day cache of the public book/version index from api.midvash.com. All data stays in chrome.storage.local and never leaves the browser. |
 | `alarms` | Schedules a weekly background refresh of the public book/version index from api.midvash.com so the reference parser stays up to date when new translations are added. |
+| `sidePanel` | Lets the user read a detected reference in Chrome's side panel instead of a new tab (chosen in the popup, or Alt+click on a reference). The side panel is a small reader bundled with the extension that fetches the passage from api.midvash.com; it opens only after a user click and reads no page data. |
 | `activeTab` | When the user opens the extension popup, the popup needs to know the hostname of the active tab in order to offer a contextual "Block references on this site" / "Enable on this site" button. This permission is used only to read the active tab's URL when the popup is invoked by the user — no other tab data is accessed and no scripts are injected via this permission. |
 | `host_permissions` (`https://api.midvash.com/*`) | The extension fetches public Bible content (book list, version list, individual verses) from the official Midvash public API to render the hover preview. No other host is contacted. |
 | Remote code use | None. All code is bundled in the extension package; the extension does not load or execute remote scripts. |
@@ -124,10 +125,10 @@ Marcar **APENAS** estas opções (todas as outras desmarcadas):
 ### Privacy policy URL
 
 ```
-https://midvash.app/chrome-extension/privacy/
+https://midvash.com/chrome-extension/privacy
 ```
 
-> URL canônica e estável. Página pública servida por `apps/site/src/pages/chrome-extension/privacy.astro`. NÃO mudar o path sem coordenar com a CWS.
+> URL canônica e estável. Página pública servida por `apps/web/src/pages/chrome-extension/privacy.astro` do monorepo do Midvash (o `midvash.app` está em desativação). NÃO mudar o path sem coordenar com a CWS.
 
 ---
 
@@ -142,7 +143,7 @@ https://midvash.app/chrome-extension/privacy/
 
 ## 4. Store assets (gerar separadamente — não posso fazer eu)
 
-Coloque em `apps/chrome-extension/assets/store/` (não-versionado se quiser, ou versione se for útil).
+Coloque em `assets/store/` (não-versionado se quiser, ou versione se for útil).
 
 | Asset | Dimensão | Formato | O que mostrar |
 |---|---|---|---|
@@ -189,8 +190,7 @@ URL pública (publicada em jun/2026, v1.1.0):
 - Item ID: `pfgneahhammonobdfheebefijejhcaej`
 
 Linkar a partir de:
-- `midvash.com` rodapé
-- `midvash.app`
+- `midvash.com` rodapé e https://midvash.com/chrome-extension
 - README do projeto
 - Posts em redes sociais
 

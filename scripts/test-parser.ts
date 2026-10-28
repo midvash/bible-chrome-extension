@@ -5,7 +5,8 @@
  * Sem framework — saída humana, exit code 1 se algo falhar.
  */
 import { buildLookup, findMatches, parseVerseList } from '../src/content/parser.ts';
-import type { BookEntry, Locale } from '../src/types.ts';
+import { creditLine } from '../src/lib/credit.ts';
+import { DEFAULT_VERSIONS, servedVersion, type BookEntry, type Locale } from '../src/types.ts';
 
 function makeBook(
   id: number,
@@ -226,6 +227,44 @@ function run(): void {
       console.error(`     texto:    "${c.text}"`);
       console.error(`     esperado: ${JSON.stringify(c.expect)}`);
       console.error(`     obtido:   ${JSON.stringify(got)}`);
+    }
+  }
+
+  console.log('\nversões e crédito:');
+  const checks: { name: string; got: unknown; expect: unknown }[] = [
+    { name: 'rivedut (typo da v1.1.0) → riveduta', got: servedVersion('rivedut'), expect: 'riveduta' },
+    { name: 'krv (typo da v1.1.0) → kor', got: servedVersion('krv'), expect: 'kor' },
+    { name: 'nvi saiu da API → onbv', got: servedVersion('nvi'), expect: 'onbv' },
+    { name: 'RVR1960 (maiúsculo) → rvr1909', got: servedVersion('RVR1960'), expect: 'rvr1909' },
+    { name: 'kjv segue kjv', got: servedVersion('kjv'), expect: 'kjv' },
+    {
+      name: 'padrões não usam slug aposentado',
+      got: Object.values(DEFAULT_VERSIONS).filter((v) => servedVersion(v) !== v),
+      expect: [],
+    },
+    {
+      name: 'crédito CC BY-SA (ONBV)',
+      got: creditLine(
+        'Biblica® Open Nova Bíblia Viva™ (ONBV)\n© 2007, 2010 Biblica, Inc.\nLicença Creative Commons Atribuição-CompartilhaIgual 4.0 (CC BY-SA 4.0).',
+      ),
+      expect: 'Biblica® Open Nova Bíblia Viva™ (ONBV) · CC BY-SA 4.0',
+    },
+    {
+      name: 'crédito domínio público (KJV)',
+      got: creditLine('King James Version (KJV)\nPublic Domain.\nFirst published in 1611.'),
+      expect: 'King James Version (KJV) · Public Domain',
+    },
+    { name: 'sem copyright → sem crédito', got: creditLine(undefined), expect: undefined },
+  ];
+  for (const c of checks) {
+    if (eq(c.got, c.expect)) {
+      passed++;
+      console.log(`  ✓ ${c.name}`);
+    } else {
+      failed++;
+      console.error(`  ✗ ${c.name}`);
+      console.error(`     esperado: ${JSON.stringify(c.expect)}`);
+      console.error(`     obtido:   ${JSON.stringify(c.got)}`);
     }
   }
 

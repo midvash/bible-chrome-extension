@@ -7,7 +7,7 @@ export default defineManifest({
   description: '__MSG_extDescription__',
   version: pkg.version,
   default_locale: 'en',
-  homepage_url: 'https://midvash.app/chrome-extension',
+  homepage_url: 'https://midvash.com/chrome-extension',
   icons: {
     16: 'icons/icon-16.png',
     32: 'icons/icon-32.png',
@@ -38,12 +38,6 @@ export default defineManifest({
       js: ['src/content/index.ts'],
       run_at: 'document_idle',
       all_frames: false,
-    },
-  ],
-  web_accessible_resources: [
-    {
-      resources: ['icons/icon-128.png'],
-      matches: ['<all_urls>'],
     },
   ],
 });
