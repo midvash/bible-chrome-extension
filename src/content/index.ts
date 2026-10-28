@@ -2,7 +2,7 @@ import { getBooksOptimistic, getVersions } from '../lib/books-cache';
 import { detectPageLocale, matchLocale } from '../lib/locale';
 import { getPrefs, updatePrefs } from '../lib/storage';
 import { isHostBlocked } from '../lib/blocklist';
-import { DEFAULT_VERSIONS, type BookEntry, type VersionEntry } from '../types';
+import { DEFAULT_VERSIONS, servedVersion, type BookEntry, type VersionEntry } from '../types';
 import { buildLookup } from './parser';
 import { linkifyNodesIdle } from './linker';
 import { collectTextNodes } from './walker';
@@ -93,7 +93,10 @@ async function main() {
     const versionsForLocale = versions.filter(
       (v) => matchLocale(v.language) === locale && v.slug !== version,
     );
-    const initialCompareVersion = prefs.compareVersionByLocale?.[locale] ?? null;
+    const storedCompare = prefs.compareVersionByLocale?.[locale] ?? null;
+    // Comparar a versão com ela mesma não serve (pode sobrar da migração).
+    const initialCompareVersion =
+      storedCompare && servedVersion(storedCompare) !== servedVersion(version) ? storedCompare : null;
 
     attachTooltip({
       locale,

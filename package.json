@@ -1,6 +1,6 @@
 {
   "name": "bible-chrome-extension",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "type": "module",
   "description": "Midvash Chrome extension — detects Bible references on any page and links them to midvash.com with a hover preview tooltip.",
@@ -16,7 +16,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:parser": "tsx scripts/test-parser.ts",
-    "zip": "cd dist && zip -r ../midvash-extension.zip ."
+    "zip": "rm -f midvash-extension.zip && cd dist && zip -r ../midvash-extension.zip . -x '.vite/*'"
   },
   "dependencies": {
     "react": "^19.2.4",

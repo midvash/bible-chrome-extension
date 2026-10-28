@@ -1,5 +1,6 @@
 import {
   DEFAULT_PREFS,
+  DEFAULT_VERSIONS,
   STORAGE_KEYS,
   servedVersion,
   type ExtensionPrefs,
@@ -24,18 +25,21 @@ function migrateVersionMap<T extends string | null>(
 export async function getPrefs(): Promise<ExtensionPrefs> {
   const result = await chrome.storage.local.get(STORAGE_KEYS.prefs);
   const stored = result[STORAGE_KEYS.prefs] as Partial<ExtensionPrefs> | undefined;
-  return {
-    ...DEFAULT_PREFS,
-    ...stored,
-    versionByLocale: {
-      ...DEFAULT_PREFS.versionByLocale,
-      ...migrateVersionMap(stored?.versionByLocale),
-    },
-    compareVersionByLocale: {
-      ...(DEFAULT_PREFS.compareVersionByLocale ?? {}),
-      ...migrateVersionMap(stored?.compareVersionByLocale),
-    },
+  const versionByLocale = {
+    ...DEFAULT_PREFS.versionByLocale,
+    ...migrateVersionMap(stored?.versionByLocale),
   };
+  const compareVersionByLocale = {
+    ...(DEFAULT_PREFS.compareVersionByLocale ?? {}),
+    ...migrateVersionMap(stored?.compareVersionByLocale),
+  };
+  // A migração pode deixar a comparação igual à principal (nvi + ol viram
+  // onbv + onbv): comparar a versão com ela mesma não serve, então zera.
+  for (const loc of Object.keys(compareVersionByLocale) as Locale[]) {
+    const primary = versionByLocale[loc] ?? DEFAULT_VERSIONS[loc];
+    if (compareVersionByLocale[loc] === primary) compareVersionByLocale[loc] = null;
+  }
+  return { ...DEFAULT_PREFS, ...stored, versionByLocale, compareVersionByLocale };
 }
 
 /**
